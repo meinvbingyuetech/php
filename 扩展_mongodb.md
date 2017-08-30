@@ -1,6 +1,6 @@
 ## 下载扩展包
-### http://pecl.php.net/package/mongodb
-wget http://pecl.php.net/get/mongodb-1.2.9.tgz
+- http://pecl.php.net/package/mongodb
+- wget http://pecl.php.net/get/mongodb-1.2.9.tgz
  
 ## 安装
 - tar zxvf mongodb-1.2.9.tgz
@@ -23,9 +23,9 @@ extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so
 ```php
 try {
 
-	//服务器状态
-	echo '<hr>';
-	$mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+    //服务器状态
+    echo '<hr>';
+    $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 
     $stats = new MongoDB\Driver\Command(["dbstats" => 1]);
     $res = $mng->executeCommand("test", $stats);
@@ -33,8 +33,8 @@ try {
     $stats = current($res->toArray());
     print_r($stats);
 
-	//查询数据---前提要在数据库创建了test库，user表
-	echo '<hr>';
+    //查询数据---前提要在数据库创建了test库，user表
+    echo '<hr>';
 
     $query = new MongoDB\Driver\Query([]); 
      
