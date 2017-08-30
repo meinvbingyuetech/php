@@ -9,3 +9,6 @@ cd redis-3.1.0
 ./configure --enable-redis --with-php-config=/usr/local/php/bin/php-config --prefix=/usr/local/phpredis
 make && make install
 ```
+## 加入php扩展
+- vim /usr/local/php/etc/php.ini
+- 文件尾部加入:extension=redis.so				##### 也可以指定完整路径：extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/redis.so
