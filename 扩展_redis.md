@@ -16,3 +16,14 @@ make && make install
 ## 重启测试
 - systemctl restart php-fpm
 - php -m | grep redis
+
+```php
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
+
+echo "Server is running: " . $redis->ping() . '<br>';
+
+$redis->SET('name', 'jason');
+
+echo $redis->GET('name');
+```
