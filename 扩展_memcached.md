@@ -1,3 +1,6 @@
+# 百度资源
+- libmemcached-1.0.18 链接：http://pan.baidu.com/s/1qYodRlE 密码：tnfo
+- memcached-2.2.0 链接：http://pan.baidu.com/s/1dE7gUop 密码：dkbz
 ```
 http://pecl.php.net/package/memcache
 
