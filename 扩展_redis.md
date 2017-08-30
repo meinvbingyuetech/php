@@ -16,7 +16,7 @@ make && make install
 ## 重启&测试
 - systemctl restart php-fpm
 - php -m | grep redis
-
+- 测试脚本
 ```php
 $redis = new Redis();
 $redis->connect('127.0.0.1', 6379);
