@@ -13,7 +13,7 @@ make && make install
 - vim /usr/local/php/etc/php.ini
 - 文件尾部加入： extension=redis.so 或 extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/redis.so
 
-## 重启测试
+## 重启&测试
 - systemctl restart php-fpm
 - php -m | grep redis
 
