@@ -34,7 +34,7 @@ try {
     print_r($stats);
 
     //查询数据---前提要在数据库创建了test库，user表
-    echo '<hr>';
+    echo PHP_EOL;
 
     $query = new MongoDB\Driver\Query([]); 
      
