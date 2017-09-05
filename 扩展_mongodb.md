@@ -42,18 +42,18 @@ try {
     
     foreach ($rows as $row) {
     
-        echo "用户名：$row->name<br>";
+        echo "用户名：$row->name".PHP_EOL;
     }
 
 } catch (MongoDB\Driver\Exception\Exception $e) {
 
     $filename = basename(__FILE__);
     
-    echo "The $filename script has experienced an error.\n"; 
-    echo "It failed with the following exception:\n";
+    echo "The $filename script has experienced an error.".PHP_EOL; 
+    echo "It failed with the following exception:".PHP_EOL;
     
-    echo "Exception:", $e->getMessage(), "\n";
-    echo "In file:", $e->getFile(), "\n";
-    echo "On line:", $e->getLine(), "\n";       
+    echo "Exception:", $e->getMessage().PHP_EOL;
+    echo "In file:", $e->getFile().PHP_EOL;
+    echo "On line:", $e->getLine().PHP_EOL;       
 }
 ```
