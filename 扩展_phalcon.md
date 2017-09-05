@@ -34,3 +34,24 @@ make && make install
 ### 如果配置比较底，编译会有一段时间，请耐心等待....
 
 ---
+
+# 添加扩展
+
+```
+vim /etc/php.d/phalcon.ini
+
+输入：
+extension=/usr/lib64/php/modules/phalcon.so
+```
+#### 或
+
+```
+vim /etc/php.ini
+
+extension=/usr/lib64/php/modules/phalcon.so
+```
+
+# 测试
+- systemctl restart php-fpm
+
+- php -m | grep phalcon
