@@ -58,8 +58,8 @@ $conn->setHost('127.0.0.1');
 $conn->setLogin('admin');
 $conn->setPassword('admin');
 if($conn->connect()){
-	echo 'connect success';
+	echo 'connect success'.PHP_EOL;
 }else{
-	echo 'connect fail';
+	echo 'connect fail'.PHP_EOL;
 }
 ```
