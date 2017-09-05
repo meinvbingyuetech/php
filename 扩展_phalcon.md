@@ -1,0 +1,36 @@
+# 安装
+
+```
+git clone --depth=1 "git://github.com/phalcon/cphalcon.git"
+cd cphalcon/build
+./install
+```
+
+#### 或
+
+```
+# 下载安装包
+wget https://github.com/phalcon/cphalcon/archive/v3.0.1.tar.gz
+
+# 重命名
+mv v3.0.1.tar.gz cphalcon-3.0.1.tar.gz
+
+#解压
+tar -zxvf cphalcon-3.0.1.tar.gz
+
+#切换目录（根据php版本和操作系统位数切换到相应的目录）
+cd cphalcon-3.0.1/build/php7/64bits/
+
+#准备环境（通过find / -name phpize 命令可查找出phpize的完整路径）
+/usr/local/php/bin/phpize
+
+#编译（通过find / -name php-config 命令可查找出php-config的完整路径）
+./configure --with-php-config=/usr/local/php/bin/php-config
+
+#安装
+make && make install
+```
+
+### 如果配置比较底，编译会有一段时间，请耐心等待....
+
+---
