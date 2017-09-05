@@ -24,7 +24,7 @@ extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so
 try {
 
     //服务器状态
-    echo '<hr>';
+    echo PHP_EOL;
     $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 
     $stats = new MongoDB\Driver\Command(["dbstats" => 1]);
