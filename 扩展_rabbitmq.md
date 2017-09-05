@@ -23,6 +23,8 @@ find / -name phpize
 
 /usr/local/php/bin/phpize
 
+find / -name php-config
+
 ./configure --with-php-config=/usr/local/php/bin/php-config --with-amqp --with-librabbitmq-dir=/usr/local/rabbitmq-c
 
 make && make install
