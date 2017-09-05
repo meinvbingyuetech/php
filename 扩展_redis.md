@@ -21,9 +21,11 @@ make && make install
 $redis = new Redis();
 $redis->connect('127.0.0.1', 6379);
 
-echo "Server is running: " . $redis->ping() . '<br>';
+echo "Server is running: " . $redis->ping() . PHP_EOL;
 
 $redis->SET('name', 'jason');
 
 echo $redis->GET('name');
+
+echo PHP_EOL;
 ```
