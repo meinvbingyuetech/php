@@ -64,7 +64,26 @@ extension=/usr/lib64/php/modules/phalcon.so
 - mv /vagrant/www/phalcon/* /home/wwwroot/phalcon/test/
 - vim /etc/nginx/conf.d/phalcon.test.conf
 ```
-11111
+server {
+    listen 80;
+    server_name phalcon.test;
+    root /home/wwwroot/phalcon/test/public;
+    index index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        #try_files $uri /index.php =404;
+        #fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    }
+}
+
 ```
 - systemctl restart nginx
 - http://phalcon.test/
