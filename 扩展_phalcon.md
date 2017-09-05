@@ -55,3 +55,16 @@ extension=/usr/lib64/php/modules/phalcon.so
 - systemctl restart php-fpm
 
 - php -m | grep phalcon
+
+# demo
+
+- 链接：http://pan.baidu.com/s/1kUPlTY3 密码：1duq
+
+- mkdir -p /home/wwwroot/phalcon/test
+- mv /vagrant/www/phalcon/* /home/wwwroot/phalcon/test/
+- vim /etc/nginx/conf.d/phalcon.test.conf
+```
+11111
+```
+- systemctl restart nginx
+- http://phalcon.test/
