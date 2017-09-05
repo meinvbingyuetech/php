@@ -41,6 +41,11 @@ extension = amqp.so
 systemctl restart php-fpm
 ```
 
+```
+vim /etc/php.d/amqp.ini
+
+extension = amqp.so
+```
 # 测试
 
 - php -m | grep amqp
