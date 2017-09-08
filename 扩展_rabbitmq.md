@@ -66,7 +66,7 @@ if($conn->connect()){
 
 # 注意
 - 查下有没有安装bcmath库
-```
-yum -y install php71w-bcmath
-php -r "phpinfo();" | grep bcmath
-```
+	```
+	yum -y install php71w-bcmath
+	php -r "phpinfo();" | grep bcmath
+	```
