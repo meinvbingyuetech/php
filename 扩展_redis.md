@@ -29,3 +29,4 @@ echo $redis->GET('name');
 
 echo PHP_EOL;
 ```
+- 参考文档：<https://github.com/phpredis/phpredis/#readme/>
