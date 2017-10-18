@@ -1,4 +1,4 @@
-<?php
+```php
 /*
 declare	[dɪˈkleə(r)] 声明
 delivery  [dɪˈlɪvəri]  传送，投递
@@ -313,3 +313,5 @@ php receive_logs_topic.php "kern.*" "*.critical"
 发出 routing key为 “kern.critical”类型的日志
 php emit_log_topic.php "kern.critical" "A critical kernel error"
 */
+
+```
