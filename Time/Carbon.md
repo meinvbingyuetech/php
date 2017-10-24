@@ -4,6 +4,10 @@
 $nine = Carbon::create(date('Y', time()),date('m', time()),date('d', time()),9,0,0);
 Carbon::now()->gte($nine)
 
+// 格式化
+Carbon::parse($item->record_at)->format('Y/m/d H:i');
+
+/************************************************************************/
 //1、基本应用
 $now = Carbon::now();                    //2016-11-03 14:13:16
 $today = Carbon::today();                //2016-11-03 00:00:00
