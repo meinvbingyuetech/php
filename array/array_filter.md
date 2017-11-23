@@ -8,4 +8,8 @@ array_filter($arr, function($k) {
 array_filter($arr, function($v, $k) {
     return $k == 'b' || $v == 4;
 }, ARRAY_FILTER_USE_BOTH)
+
+$store_data = array_filter($store_data, function ($item) {
+    return !is_null($item);
+});
 ```
