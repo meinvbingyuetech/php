@@ -1,0 +1,71 @@
+<?php
+require_once (dirname(__FILE__) . '/common.inc.php');
+require_once ($root . 'plugins/page/func.page1.php');
+
+//起始页
+if (isset ($page)) {
+	$curNum = $page;
+} else {
+	$curNum = 1;
+}
+$maxsize = 100;
+$beginPage = ($curNum -1) * $maxsize;
+
+//$data_url = "select * from __user order by uid desc limit $beginPage,$maxsize";
+//$page_url = "select uid from __user";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>订单管理</title>
+<link href="images/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#acc8de;">
+  <form name="form1" action="action/order.php" method="post">
+   <input type='hidden' name='dopost' value='save'>
+    <tr> 
+      <td height="20" colspan="7" bgcolor="#EDF9D5" background="images/tbg.gif"> 
+      	<div style='float:left'>&nbsp;<a href='order.php'><b>订单管理</b></a> &gt; <b>管理列表：</b></div>
+		<div style='float:right;padding-right:8px;'></div>	</td>
+    </tr>
+    <tr bgcolor="#f1f8fd" >
+      <td width="16%" align="center">收件人姓名</td>
+      <td width="12%" align="center">手机号码</td>
+      <td width="14%" align="center">联系地址</td>
+      <td width="10%" align="center">送货方式</td>
+      <td width="10%" align="center">付款方式</td>
+      <td width="28%" align="center">留言</td>
+      <td width="10%" align="center">管理</td>
+    </tr>
+   
+    <tr bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#ffffda';" onMouseOut="javascript:this.bgColor='#FFFFFF';"> 
+      <td>留言簿模块</td>
+      <td>2009-7-01</td>
+      <td>织梦官方</td>
+      <td>
+      gb2312      </td>
+      <td>小插件</td>
+      <td>
+      	未安装 <a href='module_main.php?action=setup&hash=0a7bea5dbe571d35def883cbec796437'><u>安装</u></a>      </td>
+      <td>
+      <a href='module_main.php?action=view&hash=0a7bea5dbe571d35def883cbec796437'>详细</a>
+      | 
+      <a href='module_main.php?action=del&hash=0a7bea5dbe571d35def883cbec796437'>删除</a>      </td>
+    </tr>
+    <tr bgcolor="#f1f8fd"> 
+      <td colspan="7" align="center">
+	  <?php
+//获取数据总条数
+$dsql->Execute('me', $page_url);
+$dataNums = $dsql->GetTotalRow('me');
+pageft($dataNums, $maxsize);
+echo $pagenav;
+?>
+	  </td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+1。以下示例验证是否全都为中文 
+<?php 
+$zsname = '斯蒂芬速度速度'; 
+if(preg_match_all("/^([\x81-\xfe][\x40-\xfe])+$/",$zsname,$match)) 
+//print_r($match[0]); 
+echo "是全中文"; 
+else 
+echo "不是全中文"; 
+?> 
+
+------------------------------------------------------------------------------------------------------------------- 
+2。以下示例验证是否有中文（可不是全都为中文） 
+<?php 
+$string = "sdfsd斯蒂芬速度"; 
+$encoding ="gb2312"; 
+if (mb_strlen($string, $encoding) != strlen($string)) { 
+echo "有中文！"; 
+}else{ 
+echo "没有中文！"; 
+} 
+?> 
+注释：要开启mbstring 组件 

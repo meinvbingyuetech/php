@@ -1,0 +1,22 @@
+<?php 
+
+	$getIp=$_SERVER["REMOTE_ADDR"];
+	echo 'IP:',$getIp;
+	echo '<br/>';
+	$content = file_get_contents("http://api.map.baidu.com/location/ip?ak=7IZ6fgGEGohCrRKUE9Rj4TSQ&ip={$getIp}&coor=bd09ll");
+	$json = json_decode($content);
+
+	echo 'log:',$json->{'content'}->{'point'}->{'x'};//按层级关系提取经度数据
+	echo '<br/>';
+	echo 'lat:',$json->{'content'}->{'point'}->{'y'};//按层级关系提取纬度数据
+	echo '<br/>';
+	print $json->{'content'}->{'address'};//按层级关系提取address数据
+
+?>
+
+<!--
+IP:14.150.215.205
+log:113.30764968
+lat:23.12004910
+广东省广州市
+-->

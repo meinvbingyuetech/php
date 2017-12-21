@@ -1,0 +1,28 @@
+htmlspecialchars(addslashes($string))
+
+所有数据在插入数据库之前，均需要进行addslashes()处理，以免特殊字符未经转义在插入数据库的时候出现错误。
+Discuz!中所有通过 GET, POST, FILE,取得的变量默认情况下已经使用了addslashes()进行了转义，不必重复进行。
+如果数据处理必要(例如用于直接显示)，可以使用 stripslashes() 恢复，但数据在插入数据库之前必须再次进行转义。
+缓存文件中，一般对缓存数据的值采用 addcslashes($string, '\'\\')进行转义。
+
+示例：
+存入数据库的标题是：Don't Don't I Don‘t Wanna Sleep What I'd said is a dizzy+=&amp;#龙$ ,%？/@.'＂\生动丰富的上升幅
+用以下SQL语句查询：select id from gsw_archives where 1 and title like '%Don\'t Don\'t%'
+$_sql_keyword = addslashes($_keyword);
+$where .= " and title like '%".$_sql_keyword."%' ";
+
+
+在DEDE中，
+title是直接存入：Don't Don't I Don‘t Wanna Sleep What I'd said is a dizzy+=&amp;#龙$ ,%？/@.'＂\生动丰富的上升幅
+body是转为实体再存入：Don&#39;t Don&#39;t I Don&lsquo;t Wanna Sleep What I&#39;d said is a dizzy+=&amp;#龙$ ,%？/@.&#39;&quot;\生动丰富的上升幅度
+
+---------------------------------------------------------------------------------------------------------------
+htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。
+预定义的字符是：
+    & （和号） 成为 &amp;
+    " （双引号） 成为 &quot;
+    ' （单引号） 成为 &#039;
+    < （小于） 成为 &lt;
+    > （大于） 成为 &gt;
+
+echo htmlspecialchars($str, ENT_QUOTES); 双引号和单引号都编码

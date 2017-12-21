@@ -1,0 +1,78 @@
+3.cURL实现Get和Post
+
+3.1 Get方式实现
+复制代码 代码如下:
+
+　　//初始化
+　　$ch = curl_init();
+
+　　//设置选项，包括URL
+　　curl_setopt($ch, CURLOPT_URL, "http://www.jb51.net");
+　　curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+　　curl_setopt($ch, CURLOPT_HEADER, 0);
+
+　　//执行并获取HTML文档内容
+　　$output = curl_exec($ch);
+
+　　//释放curl句柄
+　　curl_close($ch);
+
+　　//打印获得的数据
+　　print_r($output);
+
+3.2 Post方式实现
+复制代码 代码如下:
+
+　　 $url = "http://localhost/web_services.php";
+　　$post_data = array ("username" => "bob","key" => "12345");
+
+　　$ch = curl_init();
+
+　　curl_setopt($ch, CURLOPT_URL, $url);
+　　curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+　　// post数据
+　　curl_setopt($ch, CURLOPT_POST, 1);
+　　// post的变量
+　　curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+
+　　$output = curl_exec($ch);
+　　curl_close($ch);
+
+　　//打印获得的数据
+　　print_r($output);
+
+　　
+
+　　以上方式获取到的数据是json格式的，使用json_decode函数解释成数组。
+
+　　$output_array = json_decode($output,true);
+
+　　如果使用json_decode($output)解析的话，将会得到object类型的数据。
+
+*******************************************************************************
+function do_post($url, $data)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+    curl_setopt($ch, CURLOPT_POST, TRUE); 
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data); 
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $ret = curl_exec($ch);
+
+    curl_close($ch);
+    return $ret;
+}
+
+function get_url_contents($url)
+{
+    if (ini_get("allow_url_fopen") == "1")
+        return file_get_contents($url);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $result =  curl_exec($ch);
+    curl_close($ch);
+
+    return $result;
+}

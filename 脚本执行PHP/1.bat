@@ -1,0 +1,1 @@
+D:\wamp\bin\php\php5.4.16\php.exe D:\1.php 6

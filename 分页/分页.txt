@@ -1,0 +1,104 @@
+/***********************
+以下的分页调用均是当前page1.php的调用
+/***********************
+
+//////////////////////////////////  mysql
+
+include_once ("../page1.php");
+
+//起始页
+if (isset ($_GET['page'])) {
+	$curNum = $_GET['page'];
+} else {
+	$curNum = 1;
+}
+$beginPage = ($curNum -1) * 10;
+
+$data_url = "SELECT * from chengfa order by id desc limit $beginPage,10";
+$page_url = "SELECT * FROM `chengfa`";
+
+$result = mysql_query($data_url);
+
+    <?php
+    while($row = mysql_fetch_array($result)){
+	?>
+	<?php echo $row[nickname]?>
+	<?php
+    }
+    ?>
+
+    <?php
+    if(mysql_num_rows($result)==0){//没有数据
+    ?>
+    <tr>
+    <td colspan="7" align="center">没有您要检索的数据！</td>
+    </tr>
+    <?php
+    }else{//有数据
+    ?>
+    <tr>
+     <td align="center" colspan="7">
+     <?php
+		//获取数据总条数
+		$dataResult = mysql_query($page_url);
+		$dataNums = mysql_num_rows($dataResult);
+
+		//调用分页
+		pageft($dataNums, 10);
+
+		//赋值
+		echo $pagenav;
+	 ?>
+     </td>
+     </tr>
+    <?php
+    }
+    ?>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+以下是使用include_once ("../inc/func.page3.php");的分页代码
+    <?php
+	//获取数据总条数
+	$dataResult = mysql_query($page_url);
+	$dataNums = mysql_num_rows($dataResult);
+
+	//每页显示的条数
+	$page_size = 15;
+	//总条目数
+	$nums = $dataNums;
+	//每次显示的页数
+	$sub_pages = 6;
+	//得到当前是第几页
+	$subPages = new SubPages($page_size, $nums, $curNum, $sub_pages, "help_list.php?p=", 2);
+	?>
+
+
+//////////////////////////////////  mssql
+include_once("../page1.php");
+
+//分页配置
+$count = 10;
+if (isset ($_GET['page'])) {
+	$curNum = $_GET['page'];
+} else {
+	$curNum = 1;
+}
+$beginPage = ($curNum -1) * $count;
+
+$data_url = "select top $count * from new_wangdian where id not in(select top $beginPage id from new_wangdian order by id desc) order by id desc";
+$page_url = "SELECT * FROM new_wangdian";
+
+$result = mssql_query($data_url);
+
+
+<?php
+//获取数据总条数
+$dataResult = mssql_query($page_url);
+$dataNums = mssql_num_rows($dataResult);
+//调用分页
+pageft($dataNums, 10);
+
+//赋值
+echo $pagenav;
+?>

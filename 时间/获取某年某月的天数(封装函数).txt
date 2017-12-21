@@ -1,0 +1,15 @@
+//传入参数 2011-12(即你想获取日数的年月)
+function month_day($yearMonth){
+	
+	$arr = explode("-",$yearMonth);
+	$nextYear = $arr[0];
+	$nextMonth = $arr[1]+1;
+	if($nextMonth>12){
+		$nextYear = $arr[0]+1;
+		$nextMonth = 1;
+	}
+
+	$t= (strtotime($nextYear."-".$nextMonth."-1")-strtotime($yearMonth."-1"));
+	$days=$t/(60*60*24);
+	echo $days;
+}

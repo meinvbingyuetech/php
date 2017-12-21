@@ -1,0 +1,62 @@
+<script type="text/javascript" src="avatar/swfobject.js"></script>
+<script type="text/javascript" src="avatar/fullAvatarEditor.js"></script>
+<script type="text/javascript">
+
+swfobject.addDomLoadEvent(function () {
+	
+	var swf = new fullAvatarEditor("avatar/fullAvatarEditor.swf", "avatar/expressInstall.swf", "swfContainer", {
+			id : 'swf',
+			upload_url : 'up.php?uid=6',
+			method : 'post',
+			//src_upload : 2,		//是否上传原图片的选项，有以下值：0-不上传；1-上传；2-显示复选框由用户选择
+			avatar_box_border_width : 0,
+			avatar_sizes : '120*120|90*90|48*48',
+			avatar_sizes_desc : '120*120像素|90*90像素|48*48像素',
+			tab_visible : true
+		}, function (msg) {
+			switch(msg.code)
+			{
+				case 3 :
+					if(msg.type == 1)
+					{
+						alert("摄像头已准备就绪但用户未允许使用！");
+					}
+					else
+					{
+						alert("摄像头被占用！");
+					}
+					break;
+				case 5 : 
+					if(msg.type == 0)
+					{
+						if(msg.content.sourceUrl)
+						{
+							alert("原图已成功保存至服务器，url为：\n" +　msg.content.sourceUrl+"\n\n" + "头像已成功保存至服务器，url为：\n" + msg.content.avatarUrls.join("\n\n")+"\n\n传递的userid="+msg.content.userid+"&username="+msg.content.username);
+						}
+						else
+						{
+							//alert("头像上传成功！");
+							//alert(msg.content.avatarUrls);
+							/*var d = dialog({
+								content: '头像上传成功！'
+							});
+							d.show();
+							setTimeout(function () {
+								d.close().remove();
+							}, 1500);*/
+							setTimeout(function () {
+								location.href='/';
+							}, 1500);
+						}
+					}
+				break;
+			}
+		}
+	);
+});
+
+</script>
+
+
+<p id="swfContainer">本组件需要安装Flash Player后才可使用，请从<a href="http://www.adobe.com/go/getflashplayer">这里</a>下载安装。</p>
+

@@ -1,0 +1,21 @@
+安装 PHPUnit
+http://www.phpunit.cn/manual/current/zh_cn/installation.html
+
+
+php artisan make:test category/ListTest
+
+//执行userTest下的method(方法)
+phpunit --filter testList tests/userTest.php
+
+phpunit --filter testList tests/category/ListTest.php
+
+
+进入到根目录下执行命令，即有phpunit.xml的那个目录
+
+文件名必须以Test.php结尾
+方法名必须以test开头
+
+不加--filter则执行全部方法
+
+
+
