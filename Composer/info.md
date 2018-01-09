@@ -33,7 +33,7 @@
 	}
 	```
  
- - 单独引入
+ - 指定更新
 	```
 	composer update monolog/monolog
 	```
