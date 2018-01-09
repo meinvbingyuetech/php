@@ -1,15 +1,17 @@
-1¡¢ĞÂ½¨composer.json
-
+- 1ã€æ–°å»ºcomposer.json
+```
 {
 	"require": {
 	   "mhlavac/gearman": "0.1.0"
 	}
 }
+```
 
-2¡¢composer update
+- 2ã€composer update
 
 
-3¡¢ĞÂ½¨client.php
+- 3ã€æ–°å»ºclient.php
+```php
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
@@ -22,8 +24,10 @@ echo $str.PHP_EOL;
 echo $client->doNormal("replace_str", $str);
 echo PHP_EOL;
 ?>
+```
 
-4¡¢ĞÂ½¨worker.php
+- 4ã€æ–°å»ºworker.php
+```php
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
@@ -39,7 +43,9 @@ $worker->addFunction('replace_str', $function);
 
 while($worker->work());
 ?>
+```
 
-5¡¢Ö´ĞĞ
-
+- 5ã€æ‰§è¡Œ
+```
 php71 client.php & php71 worker.php
+```
