@@ -21,12 +21,20 @@
 - composer require roumen/sitemap
 
 
+----
 
-
-
-
-
-
-
+- 创建 composer.json
+	```
+	{
+	  "require": {
+	      "php-amqplib/php-amqplib": "2.7.*",
+	      "monolog/monolog": "1.18.1"
+	  }
+	}
+	```
+ - 单独引入
+	 ```
+	 composer update monolog/monolog
+	 ```
 
 
