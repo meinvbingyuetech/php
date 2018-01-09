@@ -4,6 +4,13 @@
 	```
 
 - composer create-project --prefer-dist laravel/laravel blog
+	```
+	--prefer-dist
+	为了强制使用压缩包，而不是克隆源代码。
+
+	blog
+	为指定安装目录
+	```
 
 - composer create-project --prefer-dist laravel/lumen 
 
@@ -13,12 +20,6 @@
 
 - composer require roumen/sitemap
 
-```
---prefer-dist
-为了强制使用压缩包，而不是克隆源代码。
-
-
-```
 
 
 
