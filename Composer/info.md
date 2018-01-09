@@ -1,7 +1,7 @@
-## 查看配置
-```
-composer config -gl
-```
+- 查看配置
+	```
+	composer config -gl
+	```
 
 - composer create-project --prefer-dist laravel/laravel blog
 
