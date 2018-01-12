@@ -1,42 +1,81 @@
+- 创建composer.json
+```json
+{
+  "require": {
+      "php-amqplib/php-amqplib": "2.7.*"
+  }
+}
+```
+
+- 安装
+```
+composer update
+```
+
+- sender.php
 ```php
+<?php
 
-//require 'vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$conn_args = array(
-    'host'=>'192.168.11.68',
-    'port'=>5672,
-    'login'=>'xianli',
-    'password'=>'123456',
-    'vhost'=>'/stock_assistant'
-);
-$e_name = 'assistant_rank_exchange';
-$q_name = 'assistant_rank_queue3';
-$k_route = 'assistant_rank_route';
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
+$connection = new AMQPStreamConnection('localhost', 5672, 'admin', 'admin');
+$channel = $connection->channel();
 
 
-$conn = new AMQPConnection($conn_args);
-if(!$conn->connect()){
-    die('Cannot connect to the broker');
+
+
+
+
+
+$exchange_name = 'test';
+$channel->exchange_declare($exchange_name, 'fanout', false, false, false);
+
+$data = "\nHello Hello World!".time()."\n";
+$msg = new AMQPMessage($data);
+
+$channel->basic_publish($msg, $exchange_name);
+
+$channel->close();
+$connection->close();
+```
+
+- receive.php
+```
+<?php
+require_once __DIR__.'/vendor/autoload.php';
+
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
+$connection = new AMQPStreamConnection('localhost', 5672, 'admin', 'admin');
+$channel = $connection->channel();
+
+
+
+
+
+
+
+$exchange_name = 'test';
+$channel->exchange_declare($exchange_name, 'fanout', false, false, false);
+
+list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
+
+$channel->queue_bind($queue_name, $exchange_name);
+
+$callback = function($msg){
+  echo ' [x] ', $msg->body, "\n";
+};
+
+$channel->basic_consume($queue_name, '', false, true, false, false, $callback);
+
+while(count($channel->callbacks)) {
+    $channel->wait();
 }
-$channel = new AMQPChannel($conn);
-$ex = new AMQPExchange($channel);
-$ex->setName($e_name);
-$ex->setType(AMQP_EX_TYPE_FANOUT);
-$ex->setFlags(AMQP_DURABLE);
 
-$q = new AMQPQueue($channel);
-//var_dump($q);
-$q->setName($q_name);
-$q->bind($e_name, $k_route);
-
-while(true){
-    $arr = $q->get();
-//    var_dump($arr);
-    $res = $q->ack($arr->getDeliveryTag());
-
-    echo "response ------ \n";
-//    $msg = $arr->getBody();
-//    $data = json_decode($msg,true);
-//    echo $data['type']."\n";
-}
+$channel->close();
+$connection->close();
 ```
