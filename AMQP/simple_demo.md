@@ -26,10 +26,6 @@ $channel = $connection->channel();
 
 
 
-
-
-
-
 $exchange_name = 'test';
 $channel->exchange_declare($exchange_name, 'fanout', false, false, false);
 
@@ -43,7 +39,7 @@ $connection->close();
 ```
 
 - receive.php
-```
+```php
 <?php
 require_once __DIR__.'/vendor/autoload.php';
 
@@ -52,10 +48,6 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 $connection = new AMQPStreamConnection('localhost', 5672, 'admin', 'admin');
 $channel = $connection->channel();
-
-
-
-
 
 
 
