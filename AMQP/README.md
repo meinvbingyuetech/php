@@ -1,6 +1,6 @@
 ```php
 /*
-declare	[dɪˈkleə(r)] 声明
+declare	[dɪˈkleə(r)] 声明，宣布
 delivery  [dɪˈlɪvəri]  传送，投递
 durable [ˈdjʊərəbl] 持久的
 QoS（Quality of Service，服务质量）
