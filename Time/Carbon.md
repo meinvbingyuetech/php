@@ -6,6 +6,7 @@ Carbon::now()->gte($nine)
 
 // 格式化
 Carbon::parse($item->record_at)->format('Y/m/d H:i');
+\Carbon\Carbon::parse('2018-01-12 02:36:16')->format("YmdHis");
 
 /************************************************************************/
 //1、基本应用
