@@ -32,4 +32,8 @@ $week_end = $yestoday_end;
 $start_3 = strtotime(date("Y/m/d 0:0:0", strtotime("3 days ago")));
 $end_3 = $yestoday_end;
 echo date('Y-m-d H:i:s',$start_3)." - ".date('Y-m-d H:i:s',$end_3);exit;
+
+// 一个月
+$month_start = date("Ymd000000", strtotime("29 days ago"));
+$month_end = date("Ymd235959",time());
 ```
