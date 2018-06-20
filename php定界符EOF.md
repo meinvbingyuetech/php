@@ -1,4 +1,13 @@
-<?php 
+```
+$res_html = <<<html
+         
+            <h3 style="text-align: center;">该文章暂时不得观看！</h3>
+               
+html;
+        echo $res_html;
+```
+----
+```
 
 Heredoc技术。可用来输出大段的html和javascript脚本
 
@@ -118,4 +127,4 @@ EOT;
 }
 outputhtml();
 
-?>
+```
