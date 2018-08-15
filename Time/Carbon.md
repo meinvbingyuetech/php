@@ -6,6 +6,8 @@ $yesterday = Carbon::yesterday()->toDateString();  // 2018-08-14
 Carbon::now()                   //2018-08-15 10:02:01
 Carbon::now()->format('Y-m-d')
 
+Carbon::now()->addMinutes(3)
+
 // 格式化
 Carbon::parse($item->record_at)->format('Y/m/d H:i');
 Carbon::parse('2018-01-12 02:36:16')->format("YmdHis");
@@ -23,6 +25,17 @@ Carbon::now()->gte($nine)
 
 //时间戳
 Carbon::parse('2018-05-09')->timestamp    // 1525795200
+
+Carbon::create(2018, 8, 8)      //2018-08-08 10:10:24
+
+/************************************************************************/
+list($year1, $month1, $day1) = explode('-', date('Y-m-d', $begin_time));
+list($year2, $month2, $day2) = explode('-', date('Y-m-d', $end_time));
+
+$result = Carbon::create($year2, $month2, $day2)->diff(Carbon::create($year1, $month1, $day1));
+'year' => $result->y,
+'month' => $result->m,
+'day' => $result->d,
 
 /************************************************************************/
 //1、基本应用
