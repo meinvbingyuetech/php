@@ -21,6 +21,9 @@ $end_year_month = Carbon::now()->addMonth(1)->format('Y-m');
 $nine = Carbon::create(date('Y', time()),date('m', time()),date('d', time()),9,0,0);
 Carbon::now()->gte($nine)
 
+//时间戳
+Carbon::parse('2018-05-09')->timestamp    // 1525795200
+
 /************************************************************************/
 //1、基本应用
 $now = Carbon::now();                    //2016-11-03 14:13:16
