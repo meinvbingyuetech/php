@@ -2,6 +2,17 @@
 // 获取昨天的年月日
 $yesterday = Carbon::yesterday()->toDateString();  // 2018-08-14
 
+
+Carbon::now()                   //2018-08-15 10:02:01
+Carbon::now()->format('Y-m-d')
+
+// 格式化
+Carbon::parse($item->record_at)->format('Y/m/d H:i');
+Carbon::parse('2018-01-12 02:36:16')->format("YmdHis");
+
+// 今天
+Carbon::today()->format("Y-m-d H:i:s")    // 2018-08-15 00:00:00
+
 // 下个月
 $start_year_month = Carbon::now()->addMonth(1)->format('Y-m');
 $end_year_month = Carbon::now()->addMonth(1)->format('Y-m');
@@ -9,10 +20,6 @@ $end_year_month = Carbon::now()->addMonth(1)->format('Y-m');
 // 判断当前时间是否大于早上9点
 $nine = Carbon::create(date('Y', time()),date('m', time()),date('d', time()),9,0,0);
 Carbon::now()->gte($nine)
-
-// 格式化
-Carbon::parse($item->record_at)->format('Y/m/d H:i');
-\Carbon\Carbon::parse('2018-01-12 02:36:16')->format("YmdHis");
 
 /************************************************************************/
 //1、基本应用
