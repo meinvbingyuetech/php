@@ -1,4 +1,7 @@
 ```php
+// 获取昨天的年月日
+$yesterday = Carbon::yesterday()->toDateString();  // 2018-08-14
+
 // 下个月
 $start_year_month = Carbon::now()->addMonth(1)->format('Y-m');
 $end_year_month = Carbon::now()->addMonth(1)->format('Y-m');
