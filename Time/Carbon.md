@@ -73,3 +73,62 @@ echo $dt->toDateTimeString();                      // 1975-12-25 14:15:16
 echo $dt->toDayDateTimeString();                   // Thu, Dec 25, 1975 2:15 PM
 
 ```
+
+```php
+//获取当前时间
+
+echo Carbon::now().'<br />';
+
+//获取当前时间的固定格式
+
+echo Carbon::now()->format('Y-m-d').'<br />';
+
+//获取当前时间的时间戳
+
+echo Carbon::now()->timestamp.'<br />';
+
+//设置当前地区的时区
+
+echo Carbon::now()->timezone('Asia/Shanghai').'<br />';
+
+//获取特定时间的时间戳
+
+echo '昨天的当前时间时间戳:'.Carbon::now()->subDay(1)->timestamp.'<br />';
+
+//获取前一天的开始与结束时间
+
+echo '前一天开始时间:'.Carbon::now()->yesterday()->startOfDay()->timezone('Asia/Shanghai')->format('Y-m-d H:i:s').'<br />';
+
+echo '前一天结束时间:'.Carbon::now()->yesterday()->endOfDay()->timezone('Asia/Shanghai').'<br />';
+
+
+
+//获取上一周的开始与结束时间
+
+echo '上一周开始时间:'.Carbon::now()->previous()->startOfWeek()->timezone('Asia/Shanghai')->format('Y-m-d H:i:s').'<br />';
+
+echo '上一周结束时间:'.Carbon::now()->previous()->endOfWeek()->timezone('Asia/Shanghai').'<br />';
+
+
+
+//获取上一月的开始与结束时间
+
+echo '上一月开始时间:'.Carbon::now()->subMonth(1)->startOfMonth()->timezone('Asia/Shanghai')->format('Y-m-d H:i:s').'<br />';
+
+echo '上一月结束时间:'.Carbon::now()->subMonth(1)->endOfMonth()->timezone('Asia/Shanghai').'<br />';
+
+
+
+//获取上一年的开始与结束时间
+
+echo '上一年开始时间:'.Carbon::now()->subYear(1)->startOfYear()->timezone('Asia/Shanghai')->format('Y-m-d H:i:s').'<br />';
+
+echo '上一年结束时间:'.Carbon::now()->subYear(1)->endOfYear()->timezone('Asia/Shanghai').'<br />';
+
+//获取今年的开始与结束时间
+
+echo '今年开始时间:'.Carbon::now()->lastOfYear()->startOfYear()->timezone('Asia/Shanghai')->format('Y-m-d H:i:s').'<br />';
+
+echo '今年结束时间:'.Carbon::now()->lastOfYear()->endOfYear()->timezone('Asia/Shanghai').'<br />';
+```
+
