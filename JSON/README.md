@@ -11,3 +11,10 @@ public static function outputJson($json_data = array()) {
     echo @json_encode($json_data);
 }
 ```
+
+----
+
+- 让Json更懂中文
+```
+echo json_encode("中文", JSON_UNESCAPED_UNICODE);
+```
