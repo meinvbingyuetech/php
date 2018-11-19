@@ -1,4 +1,32 @@
-﻿<?php
+```php
+
+/*
+模拟 POSTMAN -》 
+POST方式
+Body->raw （不是form-data）
+传递的数据是json串：
+{
+    "display_type": 0,
+    "appId": 2
+}
+*/
+$post_data = [
+	'display_type'=>0,
+	'appId'=>2
+];
+$jsonDataEncoded = json_encode($post_data);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $push_api);
+//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+	'Content-Type: application/json'
+]);
+$result=curl_exec ($ch);
+$result_arr = json_decode($result, true);
+
 /*
 对于传递post数据，可能会是数组，也可能会是json字符串，按需求来吧
 */
@@ -261,3 +289,4 @@ throw new Exception('请求apistore失败!', self::CURL_ERROR);
 
 curl_close($ch);
 var_dump($response);
+```
