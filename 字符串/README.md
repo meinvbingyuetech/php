@@ -5,5 +5,5 @@ $var=sprintf("%04d", 2);
 echo $var;//结果为0002   
  
 // 保留2位小数点
-sprintf('%01.4f', $num);
+sprintf('%01.2f', $num);
 ```
