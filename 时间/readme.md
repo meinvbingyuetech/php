@@ -1,4 +1,4 @@
-```
+```php
 $yestoday = date('Y-m-d', strtotime('-1 day'));
 echo $yestoday;
 echo PHP_EOL;
@@ -8,6 +8,10 @@ echo $ss;
 echo PHP_EOL;
 $ss = date('Y-m-d', strtotime('2019-02 +1 month -1 day'));
 echo $ss;
+
+// 指定的月份有几天
+$t = date('t',strtotime(date('2016-2')));
+echo $t;
 ```
 
 ----
