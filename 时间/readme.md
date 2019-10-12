@@ -12,6 +12,18 @@ echo $ss;
 // 指定的月份有几天
 $t = date('t',strtotime(date('2016-2')));
 echo $t;
+
+// 本月开始和结束时间
+$begin_time = date ( "Y-m-d H:i:s", mktime ( 0, 0, 0, date ( "m" ), 1, date ( "Y" ) ) );
+$end_time = date ( "Y-m-d H:i:s", mktime ( 23, 59, 59, date ( "m" ), date ( "t" ), date ( "Y" ) ) );
+
+// 上个月开始和结束时间
+$begin_time = date('Y-m-01 00:00:00',strtotime('-1 month'));
+$end_time = date("Y-m-d 23:59:59", strtotime(-date('d').'day'));
+
+// 上上个月开始和结束时间
+$begin_time = date("Y-m-d H:i:s",mktime(0, 0 , 0,date("m")-2,1,date("Y")));
+$end_time = date("Y-m-d H:i:s",mktime(23,59,59,date("m")-1 ,0,date("Y")));
 ```
 
 ----
