@@ -1,3 +1,17 @@
+```
+$yestoday = date('Y-m-d', strtotime('-1 day'));
+echo $yestoday;
+echo PHP_EOL;
+
+$ss = date('Y-m-d', strtotime('2019-02 -1 month'));
+echo $ss;
+echo PHP_EOL;
+$ss = date('Y-m-d', strtotime('2019-02 +1 month -1 day'));
+echo $ss;
+```
+
+----
+
 ```php
 
 //当天的时间区间
