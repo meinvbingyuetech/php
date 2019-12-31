@@ -1,4 +1,46 @@
 ```php
+// 群机器人，也是发送json的，却要这样才能发送，先记录起来吧
+function qun($time, $tel, $link)
+{
+    $url_prod = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=e1521a19-15c1-47ab-a481-e208a5ea151b";// 正式链接
+    $data = [
+        'msgtype'=>'markdown',
+        'markdown'=>[
+            'content'=>'您的离线宝留言页收到一条留言，请相关同事注意。
+                > 时间：<font color="comment">'.$time.'</font>
+                > 电话：<font color="comment">'.$tel.'</font>
+                > 来源：<font color="comment"><'.$link.'></font>',
+        ],
+    ];
+    $res = request_post($url_prod, json_encode($data,'320'), 'json');
+    return $res;
+}
+
+function request_post($url = '', $post_data = array(),$dataType='') {
+    if (empty($url) || empty($post_data)) {
+        return false;
+    }
+    $curlPost = $post_data;
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    if($dataType=='json'){
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/x-www-form-urlencoded;charset=UTF-8',
+                'Content-Length: ' . strlen($curlPost)
+            )
+        );
+    }
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    $data = curl_exec($ch);
+    return $data;
+}
+```
+
+```php
 
 /*
 模拟 POSTMAN -》 
