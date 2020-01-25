@@ -10,6 +10,12 @@
 	```
 	composer config -g repo.packagist composer https://packagist.phpcomposer.com
 	```
+	
+	* 查看是否设置成功
+	```
+	cd /root/.composer/
+	cat config.json
+	```
 
 - 查看配置
 	```
