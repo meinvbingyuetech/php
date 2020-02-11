@@ -61,3 +61,10 @@
 	```
 
 
+----
+
+# composer.lock  会锁定 Composer 加载的依赖包版本号，防止由于第三方依赖包的版本不同导致的应用运行错误。
+
+### composer install  --no-autoloader --no-scripts 
+- --no-autoloader  为了阻止 composer install  之后进行的自动加载，防止由于代码不全导致的自动加载报错。
+- --no-scripts  为了阻止 composer install  运行时 composer.json  所定义的脚本，同样是防止代码不全导致的加载错误问题。
