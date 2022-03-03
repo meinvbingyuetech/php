@@ -15,7 +15,7 @@
 	
 	* 查看是否设置成功
 	```
-	cd /root/.composer/
+	cd /root/.composer/    |    cd  /root/.config/composer
 	cat config.json
 	```
 
